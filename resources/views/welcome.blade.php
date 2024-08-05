@@ -24,16 +24,28 @@
        <div class="container-fluid">
            <ul class="navbar-nav">
                <li class="nav-item">
-                   <a class="nav-link active" href="#">Active</a>
+                   <a class="nav-link active" href="#">DRAMA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">FANTASY</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">ROMANCE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CRIME</a>
                </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="#">MYSTERY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">COMEDY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">HOROR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ANIME</a>
                 </li>
            </ul>
        </div>
@@ -41,52 +53,72 @@
 <!-- End navbar -->
 
 <!-- Content -->
+@foreach ($banner as $bannerItem)
 <div class="container mt-5">
   <div class="row">
     <div class="col-sm-4">
-      <h2>TOP 1 ANIME</h2>
-      <h5>"Spirited Away"</h5>
-      <div class="fakeimg"></div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-      <h3 class="mt-4">Some Links</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+      <h2 class="font-bold font-kanit text-xl">TRENDING</h2>
+      <br>
+      <h5 class="font-bold font-lato">Inside Out 2</h5>
+      <h1>June 11, 2024</h1>
+      <img src="{{$imageBaseURL}}/original{{$bannerItem->backdrop_path}}" class="w-5px h-2.5px">
+      <p>Genre : Adventure, Animation, Family.</p>
+      <br>
+      <h3 class="mt-4 font-bold font-lato text-1xl">Lihat lainnya</h3>
+      <ul class="nav nav-pills flex-column bg-white navbar-dark">
+                <li class="nav-item">
+                   <a class="nav-link active" href="#">DRAMA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FANTASY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ROMANCE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CRIME</a>
+               </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">MYSTERY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">COMEDY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">HOROR</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ANIME</a>
+                </li>
       </ul>
       <hr class="d-sm-none">
 </div>
 
-<div class="col-sm-8">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2020</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
 
-      <h2 class="mt-5">TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2020</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    <div class="col-sm-8">
+      <h5 class="font-bold font-kanit text-xl">FILM TERBARU</h5>
+      <br>
+      <h2 class="font-lato font-bold">Deadpool & Wolverine</h2>
+      <h1>July 24, 2024</h1>
+      <img src="{{$imageBaseURL}}/original{{$bannerItem->backdrop_path}}" class="w-10px h-5px">
+      <p>Genre : Action, Adventure, Science Fiction, Superhero</p>
+      <p>Disutradarai oleh Shaw Levy, "Deadpool & Wolverine" menjadi salah satu film yang paling diantisipasi kehadirannya di tahun ini.</p>
+
+      <h2 class="mt-5 font-lato font-bold">A Quiet Place: Day One</h2>
+      <h1>June 26, 2024</h1>
+      <img src="{{$imageBaseURL}}/original{{$bannerItem->backdrop_path}}" class="w-10px h-5px">
+      <p>Genre : Horor, Fiksi Ilmiah</p>
+      <p>Disutradarai oleh Michael Sarnoski, "A Quiet Place: Day One" adalah film horor dan fiksi ilmiah yang merupakan prekuel dari film "A Quiet Place.</p>
     </div>
+  @endforeach
+
   </div>
 </div>
 
 
-<!-- {{--- Top 10 movies section --}}
-    <div class="mt-12 col-sm-5">
-        <span class="font-inter font-bold text-xl ml-28">Top 10 Movies</span>
+{{--- Top 10 movies section --}}
+    <div class="mt-12">
+        <span class="font-kanit font-bold text-xl ml-28">Top 10 Movies</span>
         <div class="w-auto flex flex-row overflow-x-auto pl-10 pt-6 pb-10">
             @foreach ($loopMovies as $movieItem)
 
@@ -116,11 +148,11 @@
             @endforeach
         </div>
     </div>
-{{--- End top 10 movies section --}} -->
+{{--- End top 10 movies section --}}
 <!-- End content -->
 
 <div class="mt-5 p-4 bg-dark text-white text-center">
-    <p>Footer</p>
+    <p>DIBUAT OLEH <a href="https://www.instagram.com/shairakhey/">@SHAIRAKHEY</a></p>
 </div>
 
 </div>

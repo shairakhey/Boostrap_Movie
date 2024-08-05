@@ -14,7 +14,7 @@ class MovieController extends Controller
         $imageBaseURL   = env('MOVIE_DB_IMAGE_BASE_URL');
         $apiKey         = env('MOVIE_DB_API_KEY');
         $max_image      = 1;
-        // $max_image_item = 10;
+        $max_image_item = 10;
 
                 // Mengambil/Hit API untuk banner
                 $bannerResponse = Http::get("{$baseURL}/trending/movie/week", [
@@ -38,36 +38,35 @@ class MovieController extends Controller
                     }
                 }
 
-        //  // Hit API for top 10 movie
-        // $loopMovieResponse = Http::get("{$baseURL}/movie/top_rated", [
-        //     'api_key' => $apiKey,
-        // ]);
+         // Hit API for top 10 movie
+        $loopMovieResponse = Http::get("{$baseURL}/movie/top_rated", [
+            'api_key' => $apiKey,
+        ]);
 
-        //  // Persiapan variable top 10 movie
-        //  $loopMovieArray = [];
+         // Persiapan variable top 10 movie
+         $loopMovieArray = [];
 
-        //  // check API response
-        //  if ($loopMovieResponse->successful()) {
-        //      $resultArray = $loopMovieResponse->object()->results;
-        //      if (isset($resultArray)){
-        //          // Looping data image
-        //          foreach($resultArray as $item) {
-        //              array_push($loopMovieArray, $item);
-        //              if (count($loopMovieArray) == $max_image_item) {
-        //                  break;
-        //              }
-        //          }
-        //      }
-        //  }
+         // check API response
+         if ($loopMovieResponse->successful()) {
+             $resultArray = $loopMovieResponse->object()->results;
+             if (isset($resultArray)){
+                 // Looping data image
+                 foreach($resultArray as $item) {
+                     array_push($loopMovieArray, $item);
+                     if (count($loopMovieArray) == $max_image_item) {
+                         break;
+                     }
+                 }
+             }
+         }
 
 
         return view('welcome', [
             'baseURL'       => $baseURL,
             'imageBaseURL'  => $imageBaseURL,
             'apiKey'        => $apiKey,
-            'banner'        => $bannerArray
-
-            // 'loopMovies'    => $loopMovieArray
+            'banner'        => $bannerArray,
+            'loopMovies'    => $loopMovieArray
         ]);
     }
 }

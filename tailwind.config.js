@@ -325,6 +325,9 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
+      anton: ['anton'],
+      lato: ['lato'],
+      kanit: ['kanit'],
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],

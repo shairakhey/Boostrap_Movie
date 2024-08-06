@@ -16,29 +16,28 @@ class MovieController extends Controller
         $max_image      = 1;
         $max_image_item = 10;
 
-                // Mengambil/Hit API untuk banner
-                $bannerResponse = Http::get("{$baseURL}/trending/movie/week", [
-                    'api_key' => $apiKey
-                ]);
-        
-                // Persiapan variable
-                $bannerArray = [];
-        
-                // check API response
-                if ($bannerResponse->successful()) {
-                    $resultArray = $bannerResponse->object()->results;
-                    if(isset($resultArray)){
-                        // Looping data image
-                        foreach($resultArray as $item) {
-                            array_push($bannerArray, $item);
-                            if(count($bannerArray) == $max_image) {
-                                break;
-                            }
-                        }
+        // Mengambil/Hit API untuk banner
+        $bannerResponse = Http::get("{$baseURL}/trending/movie/week", [
+            'api_key' => $apiKey
+        ]);
+
+        // Persiapan variable
+        $bannerArray = [];
+
+        // check API response
+        if ($bannerResponse->successful()) {
+            $resultArray = $bannerResponse->object()->results;
+            if(isset($resultArray)){
+                // Looping data image
+                foreach($resultArray as $item) {
+                    array_push($bannerArray, $item);
+                    if(count($bannerArray) == $max_image) {
+                        break;
                     }
                 }
-
-         // Hit API for top 10 movie
+            }
+        }
+        // Hit API for top 10 movie
         $loopMovieResponse = Http::get("{$baseURL}/movie/top_rated", [
             'api_key' => $apiKey,
         ]);

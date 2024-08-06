@@ -8,7 +8,19 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
   .fakeimg {
-    height: 200px;
+    height: 300px;
+    background: #aaa;
+  }
+  .fakeimg1 {
+    height: 300px;
+    background: #aaa;
+  }
+  .fakeimg2 {
+    height: 300px;
+    background: #aaa;
+  }
+  .fakeimg3 {
+    height: 300px;
     background: #aaa;
   }
   </style>
@@ -24,10 +36,10 @@
        <div class="container-fluid">
            <ul class="navbar-nav">
                <li class="nav-item">
-                   <a class="nav-link active" href="#">DRAMA</a>
+                   <a class="nav-link active" href="#">FANTASY</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">FANTASY</a>
+                    <a class="nav-link" href="#">DRAMA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">ROMANCE</a>
@@ -56,21 +68,24 @@
 @foreach ($banner as $bannerItem)
 <div class="container mt-5">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <h2 class="font-bold font-kanit text-xl">TRENDING</h2>
       <br>
-      <h5 class="font-bold font-lato">Inside Out 2</h5>
-      <h1>June 11, 2024</h1>
+      <h5 class="font-bold font-lato">Deadpool & Wolverine</h5>
+      <h1>2024-07-24</h1>
       <img src="{{$imageBaseURL}}/original{{$bannerItem->backdrop_path}}" class="w-5px h-2.5px">
-      <p>Genre : Adventure, Animation, Family.</p>
+      <br>
+      <h5 class="font-bold font-lato">Deadpool & Wolverine</h5>
+      <h1>2024-07-24</h1>
+      <img src="{{$imageBaseURL}}/original{{$bannerItem->backdrop_path}}" class="w-5px h-2.5px">
       <br>
       <h3 class="mt-4 font-bold font-lato text-1xl">Lihat lainnya</h3>
       <ul class="nav nav-pills flex-column bg-white navbar-dark">
                 <li class="nav-item">
-                   <a class="nav-link active" href="#">DRAMA</a>
+                   <a class="nav-link active" href="#">FANTASY</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">FANTASY</a>
+                    <a class="nav-link" href="#">DRAMA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">ROMANCE</a>
@@ -93,24 +108,69 @@
       </ul>
       <hr class="d-sm-none">
 </div>
+@endforeach
 
+@foreach ($banner as $bannerItem)
 
-    <div class="col-sm-8">
+        @php 
+            $original_date = $bannerItem->release_date;
+            $timestamp     = strtotime($original_date);
+            $bannerYear     = date("Y", $timestamp);
+        
+            $bannerID       = $bannerItem->id;
+            $bannerTitle    = $bannerItem->title;
+            $bannerRating   = $bannerItem->vote_average;
+            $bannerImage    = "{$imageBaseURL}/w500{$bannerItem->poster_path}";
+        @endphp
+
+    <div class="col-sm-3">
       <h5 class="font-bold font-kanit text-xl">FILM TERBARU</h5>
       <br>
-      <h2 class="font-lato font-bold">Deadpool & Wolverine</h2>
-      <h1>July 24, 2024</h1>
-      <img src="{{$imageBaseURL}}/original{{$bannerItem->backdrop_path}}" class="w-10px h-5px">
-      <p>Genre : Action, Adventure, Science Fiction, Superhero</p>
-      <p>Disutradarai oleh Shaw Levy, "Deadpool & Wolverine" menjadi salah satu film yang paling diantisipasi kehadirannya di tahun ini.</p>
-
-      <h2 class="mt-5 font-lato font-bold">A Quiet Place: Day One</h2>
-      <h1>June 26, 2024</h1>
-      <img src="{{$imageBaseURL}}/original{{$bannerItem->backdrop_path}}" class="w-10px h-5px">
-      <p>Genre : Horor, Fiksi Ilmiah</p>
-      <p>Disutradarai oleh Michael Sarnoski, "A Quiet Place: Day One" adalah film horor dan fiksi ilmiah yang merupakan prekuel dari film "A Quiet Place.</p>
+      <h2 class="font-lato font-bold">{{$bannerTitle}}</h2>
+      <h1>{{$original_date}}</h1>
+      <p>{{$bannerRating}}</p>
+      <p>{{$bannerID}}</p>
+      <img src="{{$bannerImage}}" class="fakeimg w-10px h-5px">
+      <br>
+      <h2 class="font-lato font-bold">{{$bannerTitle}}</h2>
+      <h1>{{$original_date}}</h1>
+      <p>{{$bannerRating}}</p>
+      <p>{{$bannerID}}</p>
+      <img src="{{$bannerImage}}" class="fakeimg1 w-10px h-5px">
     </div>
-  @endforeach
+
+    <div class="col-sm-3">
+      <br>
+      <br>
+      <h2 class="font-lato font-bold">{{$bannerTitle}}</h2>
+      <h1>{{$original_date}}</h1>
+      <p>{{$bannerRating}}</p>
+      <p>{{$bannerID}}</p>
+      <img src="{{$bannerImage}}" class="fakeimg2 w-10px h-5px">
+      <br>
+      <h2 class="font-lato font-bold">{{$bannerTitle}}</h2>
+      <h1>{{$original_date}}</h1>
+      <p>{{$bannerRating}}</p>
+      <p>{{$bannerID}}</p>
+      <img src="{{$bannerImage}}" class="fakeimg3 w-10px h-5px">
+    </div>
+    
+    <div class="col-sm-3">
+      <br>
+      <br>
+      <h2 class="font-lato font-bold">{{$bannerTitle}}</h2>
+      <h1>{{$original_date}}</h1>
+      <p>{{$bannerRating}}</p>
+      <p>{{$bannerID}}</p>
+      <img src="{{$bannerImage}}" class="fakeimg2 w-10px h-5px">
+      <br>
+      <h2 class="font-lato font-bold">{{$bannerTitle}}</h2>
+      <h1>{{$original_date}}</h1>
+      <p>{{$bannerRating}}</p>
+      <p>{{$bannerID}}</p>
+      <img src="{{$bannerImage}}" class="fakeimg3 w-10px h-5px">
+    </div>
+@endforeach
 
   </div>
 </div>
@@ -152,7 +212,7 @@
 <!-- End content -->
 
 <div class="mt-5 p-4 bg-dark text-white text-center">
-    <p>DIBUAT OLEH <a href="https://www.instagram.com/shairakhey/">@SHAIRAKHEY</a></p>
+    <p>DIBUAT OLEH <a href="https://www.instagram.com/shairakhey/">KHAYLA A. J</a></p>
 </div>
 
 </div>
